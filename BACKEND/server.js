@@ -1,5 +1,4 @@
 import express from "express";
-import path from "path";
 import "dotenv/config";   // for .env
 import cors from "cors";
 import mongoose from "mongoose";
@@ -9,15 +8,10 @@ import chatsRoute from "./routes/chats.js";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// __dirname in ES modules
-const __dirname = path.resolve();
 
 // Middleware
 app.use(express.json());
 app.use(cors());
-
-// Serve React frontend (Vite output)
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 
 // Connect to MongoDB
@@ -38,9 +32,6 @@ app.get("/api/test", (req, res) => {
   res.json({ message: "Backend is running!" });
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
-});
 
 // Start server
 app.listen(PORT, () => {
