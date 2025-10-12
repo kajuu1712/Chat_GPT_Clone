@@ -1,0 +1,70 @@
+.chats {
+    width: 100%;
+    max-width: 700px;
+    overflow-y: scroll;    /*if messeges get overflow then scroll in y direction */
+    padding: 6rem;
+}
+.chats::-webkit-scrollbar {
+  display: none; 
+}
+
+.userDiv {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.9rem;;
+}
+.userMessage {
+    height: fit-content;
+    background-color: #323232;
+    padding: 10px 20px;
+    border-radius: 14px;
+    margin-bottom: 3rem;
+    max-width: 500px;
+    width: fit-content;
+}
+.gptDiv {
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.hljs {
+    border-radius: 14px !important;
+}
+pre {
+    white-space: pre-wrap;
+}
+
+/* meaning */
+
+.meaningBox {
+  position: fixed;
+  top: 20rem;
+  right: 20px;
+  background: black;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+}
+ 
+
+.meaningBox p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.meaningBox i {
+  padding-left: 10px;
+  float: right;
+  cursor: pointer;
+  color: rgb(234, 121, 121);
+}
+
+@media (max-width: 1000px) {
+  .chats {
+    width: 85%
+  }
+}
