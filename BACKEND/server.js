@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 // Serve React frontend (Vite output)
-app.use(express.static(path.join(__dirname, "../FRONTEND/dist")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 
 // Connect to MongoDB
@@ -39,7 +39,7 @@ app.get("/api/test", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../FRONTEND/dist", "index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
 });
 
 // Start server
