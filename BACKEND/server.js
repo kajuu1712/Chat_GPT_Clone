@@ -37,7 +37,10 @@ app.get("/api/test", (req, res) => {
   res.json({ message: "Backend is running!" });
 });
 
-
+// Catch-all route to serve React frontend for any other route
+app.get("/(.*)/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
 
 // Start server
 app.listen(PORT, () => {
