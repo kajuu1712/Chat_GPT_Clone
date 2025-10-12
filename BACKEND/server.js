@@ -38,7 +38,7 @@ app.get("/api/test", (req, res) => {
 });
 
 // Catch-all route to serve React frontend for any other route
-app.get("/(.*)/", (req, res) => {
+app.get("/:anyPath(*)", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });
 
