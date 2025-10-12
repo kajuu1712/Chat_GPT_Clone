@@ -7,7 +7,7 @@ import mongoose from "mongoose";   //npm i mongoose
 import chatsRoute from "./routes/chats.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());    //to parse data
 app.use(cors());
