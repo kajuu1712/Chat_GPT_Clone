@@ -23,6 +23,10 @@ const connectDB = async() => {
 
 app.use("/api", chatsRoute);
 
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
+
 app.listen(PORT, () => {
     console.log(`Server running at port : ${PORT}`);
     connectDB();    //calling fn to connect to the DB.
