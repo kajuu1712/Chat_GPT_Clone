@@ -1,6 +1,6 @@
 # Chat GPT Clone
 
-A full-stack web application that replicates basic features of ChatGPT, including chat threads, typing effects, and word meaning search. The app uses OpenAI's GPT-4o-mini model for responses and a dictionary API for word meanings.
+A full-stack web application that replicates the core features of ChatGPT, including chat threads and typing effects, with an additional custom feature to search the meaning of any selected word. The app uses OpenAI's GPT-4o-mini model for responses and a dictionary API for word meanings.
 
 ---
 
