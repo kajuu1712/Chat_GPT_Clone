@@ -1,40 +1,40 @@
 import express from "express";
-import "dotenv/config";   // for .env
+import path from "path";
+import { fileURLToPath } from "url";
+import 'dotenv/config';
 import cors from "cors";
 import mongoose from "mongoose";
-
-import chatsRoute from "./routes/chats.js";
+import chatRoutes from "./routes/chat.js";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
-
-// Middleware
 app.use(express.json());
 app.use(cors());
 
+app.use("/api", chatRoutes);
 
-// Connect to MongoDB
+// ✅ Serve frontend build files
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// adjust path based on your folder structure
+app.use(express.static(path.join(__dirname, "../FRONTEND/dist"))); 
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../FRONTEND/dist/index.html"));
+});
+
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_CONNECTION);
-    console.log("Connected to database successfully.");
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("Connected with Database!");
   } catch (err) {
-    console.log("Failed to connect to database.", err);
+    console.log("Failed to connect with database", err);
   }
 };
 
-// API routes
-app.use("/api", chatsRoute);
-
-// Test backend route
-app.get("/api/test", (req, res) => {
-  res.json({ message: "Backend is running!" });
-});
-
-
-// Start server
 app.listen(PORT, () => {
-  console.log(`Server running at port: ${PORT}`);
+  console.log(`Server running at port ${PORT}`);
   connectDB();
 });
