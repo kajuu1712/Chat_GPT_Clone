@@ -1,40 +1,31 @@
-import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import 'dotenv/config';
-import cors from "cors";
-import mongoose from "mongoose";
-import chatRoutes from "./routes/chat.js";
+import express from "express";  //npm i express
+ 
+import 'dotenv/config';    //for .env file,  npm i dotenv
+import cors from 'cors';
+import mongoose from "mongoose";   //npm i mongoose
+
+import chatsRoute from "./routes/chats.js";
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+
+app.use(express.json());    //to parse data
 app.use(cors());
 
-app.use("/api", chatRoutes);
+const connectDB = async() => {
+    try {
+        await mongoose.connect(process.env.MONGODB_CONNECTION);
+        console.log("Connected to database successfully.");
+    }catch(err) {
+        console.log("Failed to connect to database.", err);
+    }
+}
 
-// ✅ Serve frontend build files
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+app.use("/api", chatsRoute);
 
-// adjust path based on your folder structure
-app.use(express.static(path.join(__dirname, "../FRONTEND/dist"))); 
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../FRONTEND/dist/index.html"));
-});
-
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log("Connected with Database!");
-  } catch (err) {
-    console.log("Failed to connect with database", err);
-  }
-};
 
 app.listen(PORT, () => {
-  console.log(`Server running at port ${PORT}`);
-  connectDB();
-});
+    console.log(`Server running at port : ${PORT}`);
+    connectDB();    //calling fn to connect to the DB.
+})

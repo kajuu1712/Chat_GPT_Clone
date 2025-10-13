@@ -25,7 +25,7 @@ export default function Sidebar() {
 
     const getAllThreads = async () => {
         try {
-            const response = await fetch("/api/thread");
+            const response = await fetch("https://chat-gpt-clone-fskq.onrender.com/api/thread");
             const res = await response.json();
             const filterData = res.map(thread => ({ threadId: thread.threadId, title: thread.title }));
             setAllThreads(filterData);
@@ -40,7 +40,7 @@ export default function Sidebar() {
     const changeThread = async (threadId) => {
         setCurrThreadId(threadId);   //to save the new updations(prompts , replies) in current threadId
         try {
-            const response = await fetch(`/api/thread/${threadId}`);
+            const response = await fetch(`https://chat-gpt-clone-fskq.onrender.com/api/thread/${threadId}`);
             const res = await response.json();
             setPrevChats(res.messages);
             setNewChat(false);
@@ -54,7 +54,7 @@ export default function Sidebar() {
 
     const deleteThread = async (threadId) => {
         try {
-            const response = await fetch(`/api/thread/${threadId}`, { method: "DELETE" });
+            const response = await fetch(`https://chat-gpt-clone-fskq.onrender.com/api/thread/${threadId}`, { method: "DELETE" });
             const res = await response.json();
 
             //also remove from history's list
