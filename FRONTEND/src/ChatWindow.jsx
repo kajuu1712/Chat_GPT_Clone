@@ -27,7 +27,7 @@ export default function ChatWindow() {
             })
         }
         try {
-            const response = await fetch("http://localhost:3000/api/chat", options);
+            const response = await fetch("/api/chat", options);
             const res = await response.json();
             setReply(res.reply);  //gpt reply
         } catch (err) {
