@@ -4,6 +4,12 @@ A full-stack web application that replicates basic features of ChatGPT, includin
 
 ---
 
+## 🔗 Live Demo
+
+Check out the deployed app here: [Chat GPT Clone Live](https://chat-gpt-clone-fskq.onrender.com)
+
+---
+
 ## 🚀 Features / Functionality
 
 - **API Used:** OpenAI (GPT-4o-mini model)  
