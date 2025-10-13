@@ -33,7 +33,7 @@ const connectDB = async() => {
 
 app.use("/api", chatsRoute);
 
-app.get("/(.*)/", (req, res) => {
+app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(__dirname, "../FRONTEND/dist/index.html")); 
 });
 
