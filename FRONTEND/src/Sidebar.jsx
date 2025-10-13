@@ -1,4 +1,4 @@
-import './sidebar.css';
+import './Sidebar.css';
 
 import { MyContext } from './MyContext';
 import { useContext, useEffect } from 'react';
