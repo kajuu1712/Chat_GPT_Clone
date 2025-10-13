@@ -6,7 +6,7 @@ A full-stack web application that replicates the core features of ChatGPT, inclu
 
 ## 🔗 Live Demo
 
-Check out the deployed app here: [Chat GPT Clone Live](https://chat-gpt-clone-fskq.onrender.com)
+Check out the deployed app here: [Chat GPT Clone Live](https://chat-gpt-clone-fskq.onrender.com/)
 
 ---
 
