@@ -30,3 +30,8 @@ Check out the deployed app here: [Chat GPT Clone Live](https://chat-gpt-clone-fs
 ### Frontend
 - React.js
 - Font Awesome for icons
+
+## 📸 Project Screenshot
+![](https://github.com/kajuu1712/Chat_GPT_Clone/blob/main/Screenshot%202025-10-13%20191258.png)
+![](https://github.com/kajuu1712/Chat_GPT_Clone/blob/main/Screenshot%202025-10-13%20191654.png)
+
