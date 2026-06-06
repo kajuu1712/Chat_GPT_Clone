@@ -12,7 +12,7 @@ Check out the deployed app here: [Chat GPT Clone Live](https://chat-gpt-clone-fs
 
 ## 🚀 Features / Functionality
 
-- **API Used:** OpenAI (GPT-4o-mini model)  
+- **API Used:** OpenAI (gemini-1.5-flash model)  
 - **GPT Reply:** Displayed in a typing effect for a more interactive experience  
 - **Thread/Chat History:** Shows all chats, with the most recent threads at the top  
 - **Delete Thread:** Option to remove any chat thread  
