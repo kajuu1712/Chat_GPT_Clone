@@ -1,38 +1,34 @@
 import "dotenv/config";
 
 const getOpenaiApiResponces = async (message) => {
+
+  
+  const API_KEY = process.env.OPENAI_API_KEY; 
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${API_KEY}`;
+
   try {
-    const response = await fetch(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "gpt-4o-mini",
-          messages: [
-            {
-              role: "user",
-              content: message,
-            },
-          ],
-        }),
-      }
-    );
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: message }] }],
+      }),
+    });
 
     const data = await response.json();
 
-    // IMPORTANT SAFETY CHECK
-    if (!data.choices || !data.choices.length) {
-      console.error("OpenAI returned invalid data:", data);
+    // Gemini returns errors inside a top-level 'error' object
+    if (data.error) {
+      console.error("Gemini API Error:", data.error);
       return "Sorry, I couldn't generate a response.";
     }
 
-    return data.choices[0].message.content;
+    // Parse Gemini's specific response structure
+    return data.candidates[0].content.parts[0].text;
   } catch (err) {
-    console.error("OpenAI fetch error:", err);
+    console.error("Gemini fetch error:", err);
     return "Sorry, something went wrong.";
   }
 };

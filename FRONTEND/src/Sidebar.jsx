@@ -82,7 +82,7 @@ export default function Sidebar() {
                 {/* New chat button */}
 
                 <button onClick={createNewChat}>
-                    <img className='logo' src="src/assets/blacklogo.png" alt="logo-image" />
+                    <img className='logo' src="/blacklogo.png" alt="logo-image" />
                     <span><i className="fa-regular fa-pen-to-square"></i></span>
                 </button>
 
